@@ -11,7 +11,6 @@ namespace MyWebApp.Controllers {
         [HttpPost]
         public IActionResult Create(Film film) {
             if (this.ModelState.IsValid) {
-                // create a new film ...
                 return View("Created");
             } else {
                 return View("Error");
