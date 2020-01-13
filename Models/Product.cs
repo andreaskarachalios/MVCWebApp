@@ -1,13 +1,12 @@
-namespace MyWebApp.Models {
-    // public class Product {
-    //     public int ID { get; set; }
-    //     public string Name { get; set; }
-    //     public double Price { get; set; }
+namespace ProductManager.Models {
+    public partial class Product {
+        public int ID { get; set; }
+        public int TypeID { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+    }
 
-    //     public string Description { get; set; }
-
-    //     public Product(int id, string name, double price) {
-    //         this.ID = id; this.Name = name; this.Price = price;
-    //     }
-    // }
+    public partial class Product {
+        public ProductType Type { get; set; }
+    }
 }
