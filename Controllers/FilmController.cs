@@ -8,28 +8,28 @@ namespace MyWebApp.Controllers {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Create(Film film) {
-            if (this.ModelState.IsValid) {
-                return View("Created");
-            } else {
-                return View("Error");
-            }
-        }
+        // [HttpPost]
+        // public IActionResult Create(Film film) {
+        //     if (this.ModelState.IsValid) {
+        //         return View("Created");
+        //     } else {
+        //         return View("Error");
+        //     }
+        // }
 
-        [HttpGet]
-        public IActionResult Update() {
-            return View();
-        }
+        // [HttpGet]
+        // public IActionResult Update() {
+        //     return View();
+        // }
 
-        [HttpPost]
-        public IActionResult Update(Film film) {
-            if (this.ModelState.IsValid) {
-                // update the existing film by ID
-                return View("Updated");
-            } else {
-                return View("Error");
-            }
-        }
+        // [HttpPost]
+        // public IActionResult Update(Film film) {
+        //     if (this.ModelState.IsValid) {
+        //         // update the existing film by ID
+        //         return View("Updated");
+        //     } else {
+        //         return View("Error");
+        //     }
+        // }
     }
 }

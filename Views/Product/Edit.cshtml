@@ -1,0 +1,11 @@
+@model MyWebApp.Models.Product
+<html>
+<body>
+    @using (Html.BeginForm("TargetAction", "TargetController")) {
+        @Html.HiddenFor(p => p.ID, Model.ID)<br />
+        @Html.TextBoxFor(p => p.Name, Model.Name)<br />
+        @Html.TextBoxFor(p => p.Price, Model.Price)<br />
+        <input type="submit" value="Submit" /><br />
+    }
+</body>
+</html>

@@ -1,0 +1,19 @@
+@model List<MyWebApp.Models.Product>
+<html>
+<body>
+    <h2>Dropdown List</h2>
+    @using (Html.BeginForm("TargetAction", "TargetController")) {
+        @Html.DropDownList("selected", new SelectList(Model, "ID", "Name"))
+        <input type="submit" value="Checkout" />
+    }
+    <hr />
+    <h2>List Box</h2>
+    @{
+        var items = Model.Select(p => new SelectListItem { Value = p.ID.ToString(), Text = $"{p.Name} (${p.Price})" });
+    }
+    @using (Html.BeginForm("TargetAction", "TargetController")) {
+        @Html.ListBox("selected", items)<br />
+        <input type="submit" value="Checkout" />
+    }
+</body>
+</html>
