@@ -1,0 +1,22 @@
+@model ProductManager.Models.Product
+
+<h1>Product Detail</h1>
+
+<table border="1">
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.ID)</td>
+        <td>@Html.DisplayFor(p => p.ID)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.Name)</td>
+        <td>@Html.DisplayFor(p => p.Name)</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.Type)</td>
+        <td>@Html.ActionLink(Model.Type.Name, "IndexByTypeID", new { id = Model.TypeID })</td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(p => p.Price)</td>
+        <td>@Html.DisplayFor(p => p.Price)</td>
+    </tr>
+</table>

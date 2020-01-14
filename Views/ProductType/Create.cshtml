@@ -1,0 +1,8 @@
+@model ProductManager.Models.ProductType
+
+<h1>Add a New Product Type</h1>
+@using (Html.BeginForm()) {
+    @Html.LabelFor(pt => pt.Name)
+    @Html.TextBoxFor(pt=>pt.Name)
+    <input type="submit" value="Add" />
+}

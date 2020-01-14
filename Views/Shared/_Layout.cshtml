@@ -1,14 +1,14 @@
 <html>
-    <head>
-        <title>My Web App</title>
-    </head>
-    <body>
-        |@Html.ActionLink("Home", "Home")
-        |@Html.ActionLink("Page1", "Page1")
-        |@Html.ActionLink("Page2", "Page2")|
-        <hr/>
-        @RenderBody()
-        <hr/>
-        Copyright | @DateTime.Now.ToString()
-    </body>
+    <!--use table as the navigation bar-->
+    <table>
+        <tr>
+            <td>|@Html.ActionLink("Home", "Index", "Home")</td>
+            <td>|@Html.ActionLink("Products", "Index", "Product")</td>
+            <td>|@Html.ActionLink("Types", "Index", "ProductType")</td>
+        </tr>
+    </table>
+    <hr/>
+    @RenderBody()
+    <hr/>
+    Welcome to My Website! (@DateTime.Now)
 </html>

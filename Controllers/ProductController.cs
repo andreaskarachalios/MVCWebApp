@@ -1,18 +1,57 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using MyWebApp.Models;
+using ProductManager.Models;
 
-namespace MyWebApp.Controllers {
+namespace ProductManager.Controllers {
     public class ProductController : Controller {
         public IActionResult Index() {
-            var vm = new ProductListVM();
-            vm.Discount = new Discount { Start = DateTime.Today, End = DateTime.Today.AddDays(30), Rate = 0.75 };
-            vm.Products = new List<Product>();
-            vm.Products.Add(new Product { ID = 101, Name = "Book", Price = 20 });
-            vm.Products.Add(new Product { ID = 102, Name = "Bike", Price = 30 });
-            vm.Products.Add(new Product { ID = 103, Name = "Fireworks", Price = 40 });
-            return View("ProductList", vm);
+            ViewData["Title"] = "All Products";
+            var products = DataSource.GetProducts();
+            return View(products);
+        }
+
+        public IActionResult IndexByTypeID(int id) {
+            var pt = DataSource.GetProductTypeByID(id);
+            ViewData["Title"] = $"Products of {pt.Name}";
+            var products = DataSource.GetProductsByTypeID(id);
+            return View("Index", products); // reuse Index view
+        }
+
+        public IActionResult ShowDetail(int id) {
+            var product = DataSource.GetProductByID(id);
+            if (product != null)
+                return View("Detail", product);
+            else
+                return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Create() {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product) {
+            if (ModelState.IsValid)
+                DataSource.AddProduct(product);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id) {
+            DataSource.RemoveProductByID(id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id) {
+            var product = DataSource.GetProductByID(id);
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product) {
+            if (ModelState.IsValid)
+                DataSource.UpdateProductByID(product.ID, product);
+            return RedirectToAction("Index");
         }
     }
 }

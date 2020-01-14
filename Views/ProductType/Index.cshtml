@@ -1,0 +1,30 @@
+@model List<ProductManager.Models.ProductType>
+
+<h1>All Product Types</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Product Count</th>
+        <th>Delete</th>
+        <th>Edit</th>
+        <th>Products</th>
+    </tr>
+    @foreach (var pt in Model) {
+        <tr>
+            <td>@pt.ID</td>
+            <td>@pt.Name</td>
+            <td>@pt.Products.Count</td>
+            <td>
+                @if (pt.CanBeRemoved) {
+                    @Html.ActionLink("Delete", "Delete", new { id = pt.ID })
+                } else {
+                    <span>--</span>
+                }
+            </td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = pt.ID })</td>
+            <td>@Html.ActionLink("Products", "IndexByTypeID", "Product", new { id = pt.ID })</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Add a New Product Type", "Create")

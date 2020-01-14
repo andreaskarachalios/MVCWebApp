@@ -1,0 +1,9 @@
+@model ProductManager.Models.ProductType
+
+<h1>Edit Product Type</h1>
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(pt=>pt.ID)
+    @Html.LabelFor(pt=>pt.Name)
+    @Html.TextBoxFor(pt=>pt.Name)
+    <input type="submit" value="Update" />
+}

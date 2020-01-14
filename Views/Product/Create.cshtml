@@ -1,9 +1,8 @@
 @using ProductManager.Models
 @model Product
 
-<h1>Edit Product</h1>
+<h1>Add a New Product</h1>
 @using (Html.BeginForm()) {
-    @Html.HiddenFor(p => p.ID)
     <table>
         <tr>
             <td>@Html.LabelFor(p => p.Name)</td>
@@ -22,7 +21,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Update" /></td>
+            <td><input type="submit" value="Add" /></td>
         </tr>
     </table>
 }
